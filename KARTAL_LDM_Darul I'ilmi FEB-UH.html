@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARTAL - LDM Darul Ilmi FEB-UH</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#1B4B76',
+                            orange: '#FE7F2D',
+                            lightBg: '#F8FAFC',
+                            hoverBlue: '#143859',
+                            hoverOrange: '#E56C1B'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        /* Custom scrollbar for tab contents */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-brand-lightBg text-slate-800 antialiased min-h-screen flex flex-col items-center justify-start p-0 sm:p-4 md:p-6">
+
+    <div class="w-full max-w-md bg-white min-h-screen sm:min-h-[850px] sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col justify-between border border-slate-100 relative">
+        
+        <!-- Header Banner Section -->
+        <div class="bg-brand-blue text-white p-6 relative overflow-hidden">
+            <!-- Background Decorative Accents -->
+            <div class="absolute -right-8 -bottom-8 w-36 h-36 bg-brand-orange/20 rounded-full blur-xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-32 h-32 bg-white/10 rounded-full blur-lg pointer-events-none"></div>
+
+            <div class="relative z-10 text-center">
+                <!-- Badge Status -->
+                <div class="inline-flex items-center gap-1.5 bg-brand-orange text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 shadow-md">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                    <span>Terbuka untuk Mahasiswa FEB-UH</span>
+                </div>
+                
+                <h1 class="text-3xl font-black tracking-tight text-white drop-shadow-sm">KARTAL</h1>
+                <p class="text-xs font-semibold text-orange-200 mt-0.5 tracking-wide">
+                    Kajian Umum & Literatur Rutin Ekonomi dan Bisnis Islam
+                </p>
+                
+                <!-- Tagline -->
+                <p class="text-xs text-slate-200 mt-3 leading-relaxed bg-white/10 backdrop-blur-md rounded-xl p-2.5 border border-white/15">
+                    "Wadah Belajar, Diskusi, dan Mempererat Ukhuwah Mahasiswa Muslim FEB-UH"
+                </p>
+
+                <!-- Organization Info -->
+                <div class="mt-3 inline-flex items-center gap-1.5 text-[11px] text-slate-200 font-medium">
+                    <i data-lucide="building-2" class="w-3.5 h-3.5 text-brand-orange"></i>
+                    <span>LDM Darul Ilmi FEB-UH</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-5 space-y-5 flex-1 overflow-y-auto custom-scrollbar">
+
+            <!-- Card Ringkasan & Tujuan -->
+            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-3">
+                <div class="flex items-center gap-2">
+                    <div class="p-2 bg-brand-blue text-white rounded-xl shadow-sm">
+                        <i data-lucide="compass" class="w-4 h-4"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm">Mengapa KARTAL Hadir?</h3>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    KARTAL dirancang sebagai tempat berdiskusi santai namun berbobot seputar ekonomi Islam kontemporer, sekaligus menjadi sarana mempererat persaudaraan sesama mahasiswa muslim FEB-UH.
+                </p>
+                <div class="grid grid-cols-2 gap-2 pt-1">
+                    <div class="bg-white p-2.5 rounded-xl border border-slate-200/80 text-center">
+                        <p class="text-[10px] text-slate-400 font-bold uppercase">Format</p>
+                        <p class="text-xs font-bold text-brand-blue mt-0.5">Materi & Discussion</p>
+                    </div>
+                    <div class="bg-white p-2.5 rounded-xl border border-slate-200/80 text-center">
+                        <p class="text-[10px] text-slate-400 font-bold uppercase">Suasana</p>
+                        <p class="text-xs font-bold text-brand-orange mt-0.5">Santai & Inklusif</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 px-1">Eksplorasi Kajian</div>
+                
+                <!-- Tab Buttons Navigation -->
+                <div class="grid grid-cols-3 bg-slate-100 p-1 rounded-2xl text-[11px] font-bold gap-1">
+                    <button id="tab-btn-manfaat" onclick="switchTab('manfaat')" class="py-2.5 px-1 rounded-xl transition-all duration-200 bg-brand-blue text-white shadow-md flex flex-col items-center justify-center gap-1">
+                        <i data-lucide="smile" class="w-3.5 h-3.5"></i>
+                        <span>Manfaat</span>
+                    </button>
+                    <button id="tab-btn-topik" onclick="switchTab('topik')" class="py-2.5 px-1 rounded-xl transition-all duration-200 text-slate-600 hover:text-slate-900 flex flex-col items-center justify-center gap-1">
+                        <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+                        <span>Topik</span>
+                    </button>
+                    <button id="tab-btn-bergabung" onclick="switchTab('bergabung')" class="py-2.5 px-1 rounded-xl transition-all duration-200 text-slate-600 hover:text-slate-900 flex flex-col items-center justify-center gap-1">
+                        <i data-lucide="users" class="w-3.5 h-3.5"></i>
+                        <span>Cara Ikut</span>
+                    </button>
+                </div>
+
+                <!-- Tab Content 1: Manfaat Peserta -->
+                <div id="tab-content-manfaat" class="mt-3 space-y-2.5">
+                    <div class="p-3 bg-white rounded-xl border border-slate-100 shadow-sm flex items-start gap-3 hover:border-brand-orange/40 transition-all">
+                        <div class="p-2 bg-orange-50 text-brand-orange rounded-lg shrink-0 mt-0.5">
+                            <i data-lucide="brain-circuit" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900">Wawasan Ekonomi Islam</h4>
+                            <p class="text-[11px] text-slate-500 mt-0.5">Memahami penerapan nilai syariah dalam konteks bisnis modern dan literatur terkini.</p>
+                        </div>
+                    </div>
+                    <div class="p-3 bg-white rounded-xl border border-slate-100 shadow-sm flex items-start gap-3 hover:border-brand-orange/40 transition-all">
+                        <div class="p-2 bg-blue-50 text-brand-blue rounded-lg shrink-0 mt-0.5">
+                            <i data-lucide="messages-square" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900">Diskusi Isu Terkini</h4>
+                            <p class="text-[11px] text-slate-500 mt-0.5">Ruang aman & terbuka untuk bertanya dan membedah isu keuangan serta bisnis Islam.</p>
+                        </div>
+                    </div>
+                    <div class="p-3 bg-white rounded-xl border border-slate-100 shadow-sm flex items-start gap-3 hover:border-brand-orange/40 transition-all">
+                        <div class="p-2 bg-orange-50 text-brand-orange rounded-lg shrink-0 mt-0.5">
+                            <i data-lucide="heart-handshake" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900">Relasi & Ukhuwah</h4>
+                            <p class="text-[11px] text-slate-500 mt-0.5">Memperluas jaringan pertemanan positif sesama mahasiswa muslim se-FEB Unhas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content 2: Topik & Pembahasan -->
+                <div id="tab-content-topik" class="mt-3 space-y-2.5 hidden">
+                    <div class="p-3 bg-white rounded-xl border border-slate-100 shadow-sm flex items-start gap-3">
+                        <div class="p-2 bg-slate-100 text-slate-700 rounded-lg shrink-0 mt-0.5">
+                            <i data-lucide="coins" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900">Literasi Keuangan Syariah</h4>
+                            <p class="text-[11px] text-slate-500 mt-0.5">Investasi syariah, perbankan Islam, fintech syariah, dan pengelolaan keuangan pribadi.</p>
+                        </div>
+                    </div>
+                    <div class="p-3 bg-white rounded-xl border border-slate-100 shadow-sm flex items-start gap-3">
+                        <div class="p-2 bg-slate-100 text-slate-700 rounded-lg shrink-0 mt-0.5">
+                            <i data-lucide="store" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900">Etika & Praktik Bisnis Islam</h4>
+                            <p class="text-[11px] text-slate-500 mt-0.5">Prinsip muamalah, wirausaha syariah, serta fikih transaksi ekonomi kontemporer.</p>
+                        </div>
+                    </div>
+                    <div class="p-3 bg-white rounded-xl border border-slate-100 shadow-sm flex items-start gap-3">
+                        <div class="p-2 bg-slate-100 text-slate-700 rounded-lg shrink-0 mt-0.5">
+                            <i data-lucide="trending-up" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900">Bedah Isu Isu Global & Nasional</h4>
+                            <p class="text-[11px] text-slate-500 mt-0.5">Mengkaji jurnal, buku, dan fenomena ekonomi terkini dari kacamata Islam.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content 3: Cara Bergabung & Suasana -->
+                <div id="tab-content-bergabung" class="mt-3 space-y-2.5 hidden">
+                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200/60 space-y-2">
+                        <div class="flex items-center gap-2">
+                            <span class="w-5 h-5 rounded-full bg-brand-orange text-white text-[10px] font-bold flex items-center justify-center shrink-0">1</span>
+                            <p class="text-xs font-bold text-slate-800">Daftar / Join Grup Telegram/WA</p>
+                        </div>
+                        <p class="text-[11px] text-slate-500 pl-7">Klik tombol gabung di bawah untuk masuk ke grup info khusus kajian KARTAL.</p>
+                    </div>
+
+                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200/60 space-y-2">
+                        <div class="flex items-center gap-2">
+                            <span class="w-5 h-5 rounded-full bg-brand-blue text-white text-[10px] font-bold flex items-center justify-center shrink-0">2</span>
+                            <p class="text-xs font-bold text-slate-800">Hadir & Dapatkan Materi</p>
+                        </div>
+                        <p class="text-[11px] text-slate-500 pl-7">Ikuti pemaparan materi dari narasumber kompeten secara gratis.</p>
+                    </div>
+
+                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200/60 space-y-2">
+                        <div class="flex items-center gap-2">
+                            <span class="w-5 h-5 rounded-full bg-brand-blue text-white text-[10px] font-bold flex items-center justify-center shrink-0">3</span>
+                            <p class="text-xs font-bold text-slate-800">Sesi Diskusi Bebas Interaktif</p>
+                        </div>
+                        <p class="text-[11px] text-slate-500 pl-7">Tanyakan gagasanmu atau ajukan pertanyaan secara langsung maupun bertopeng (anonim).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-2 space-y-2.5">
+                <!-- Primary CTA: Join Group -->
+                <button onclick="openJoinModal()" class="w-full py-3 px-4 bg-brand-orange hover:bg-brand-hoverOrange text-white rounded-2xl font-bold text-xs shadow-lg shadow-brand-orange/25 flex items-center justify-center gap-2 transition-all active:scale-[0.98]">
+                    <i data-lucide="user-plus" class="w-4 h-4"></i>
+                    <span>Daftar / Gabung Grup Peserta</span>
+                </button>
+
+                <!-- Secondary CTA: Ask Question -->
+                <button onclick="openQuestionModal()" class="w-full py-3 px-4 bg-white border-2 border-brand-blue/20 hover:border-brand-blue text-brand-blue rounded-2xl font-bold text-xs flex items-center justify-center gap-2 transition-all active:scale-[0.98]">
+                    <i data-lucide="help-circle" class="w-4 h-4 text-brand-orange"></i>
+                    <span>Kirim Pertanyaan / Usul Topik</span>
+                </button>
+            </div>
+
+        </div>
+
+        <div class="p-3.5 bg-slate-50 text-center border-t border-slate-100 flex flex-col items-center justify-center gap-1">
+            <div class="flex items-center gap-2 text-slate-500">
+                <a href="https://instagram.com" target="_blank" class="hover:text-brand-orange transition-colors"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                <span class="text-slate-300">•</span>
+                <span class="text-[11px] font-semibold text-slate-600">LDM Darul Ilmi FEB-UH</span>
+            </div>
+            <p class="text-[10px] text-slate-400">
+                Synergy in Islamic Economics & Syiar
+            </p>
+        </div>
+
+    </div>
+
+    
+    <!-- Modal 1: Gabung Grup / Daftar -->
+    <div id="modal-join" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden transition-opacity">
+        <div class="bg-white w-full max-w-xs rounded-3xl p-5 shadow-2xl space-y-4 border border-slate-100 relative animate-in fade-in zoom-in duration-200">
+            <button onclick="closeJoinModal()" class="absolute right-4 top-4 text-slate-400 hover:text-slate-600 p-1">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            
+            <div class="text-center pt-2">
+                <div class="w-12 h-12 bg-orange-100 text-brand-orange rounded-2xl flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="user-check" class="w-6 h-6"></i>
+                </div>
+                <h3 class="font-extrabold text-slate-900 text-base">Gabung Komunitas KARTAL</h3>
+                <p class="text-xs text-slate-500 mt-1">Dapatkan pembaruan jadwal kajian, bahan bacaan, dan link room/lokasi kajian.</p>
+            </div>
+
+            <div class="space-y-2 pt-1">
+                <a href="https://chat.whatsapp.com/Iplp5xJ06eu1oGOApBu4r0?s=cl&p=a&mlu=4&ilr=4&iam=0" target="_blank" onclick="closeJoinModal()" class="w-full py-2.5 px-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-colors">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                    <span>Gabung Grup WhatsApp</span>
+                </a>
+                <a href="https://t.me/ldmdarulilmifebuh?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAaf3NgLvHEMEgaisCb0VYSScrDKmg-uTzIVrpFXVx_nNjOCbD_HwCCLk98gysQ_aem_dlOb2CpVIpljQPyvZ9M9DA" target="_blank" onclick="closeJoinModal()" class="w-full py-2.5 px-3 bg-sky-500 hover:bg-sky-600 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-colors">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                    <span>Gabung Channel Telegram</span>
+                </a>
+            </div>
+
+            <p class="text-[10px] text-center text-slate-400">Gratis & Terbuka untuk seluruh Mahasiswa FEB-UH</p>
+        </div>
+    </div>
+
+    <!-- Modal 2: Kirim Pertanyaan Sebelum Kajian -->
+    <div id="modal-question" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden transition-opacity">
+        <div class="bg-white w-full max-w-xs rounded-3xl p-5 shadow-2xl space-y-4 border border-slate-100 relative">
+            <button onclick="closeQuestionModal()" class="absolute right-4 top-4 text-slate-400 hover:text-slate-600 p-1">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            
+            <div class="text-center pt-1">
+                <div class="w-10 h-10 bg-blue-100 text-brand-blue rounded-2xl flex items-center justify-center mx-auto mb-2">
+                    <i data-lucide="help-circle" class="w-5 h-5"></i>
+                </div>
+                <h3 class="font-extrabold text-slate-900 text-sm">Tanyakan Sesuatu</h3>
+                <p class="text-[11px] text-slate-500">Punya pertanyaan atau usul topik kajian berikutnya?</p>
+            </div>
+<form action="https://formspree.io/f/xljdokgz" method="POST">
+    <div class="mb-3">
+        <label class="block text-[10px] font-bold text-slate-600 uppercase mb-1">Nama / Inisial (Opsional)</label>
+        <!-- Tambahkan atribut name="Nama" -->
+        <input type="text" name="Nama" placeholder="Misal: Mahasiswa FEB 23" class="w-full text-xs p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-blue">
+    </div>
+    <div class="mb-3">
+        <label class="block text-[10px] font-bold text-slate-600 uppercase mb-1">Pertanyaan / Usul Topik</label>
+        <!-- Tambahkan atribut name="Pertanyaan" -->
+        <textarea name="Pertanyaan" required rows="3" placeholder="Misal: Apakah transaksi e-wallet terkena riba?" class="w-full text-xs p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-blue resize-none"></textarea>
+    </div>
+    <button type="submit" class="w-full py-2.5 bg-brand-blue hover:bg-brand-hoverBlue text-white rounded-xl text-xs font-bold transition-colors">
+        Kirim Pertanyaan
+    </button>
+</form>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-5 bg-slate-900 text-white text-xs px-4 py-2.5 rounded-xl shadow-xl flex items-center gap-2 translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+        <span id="toast-msg">Pertanyaan berhasil dikirim!</span>
+    </div>
+
+    <script>
+        // Render Icons
+        lucide.createIcons();
+
+        // Switch Tabs Logic
+        function switchTab(tabKey) {
+            const tabs = ['manfaat', 'topik', 'bergabung'];
+            
+            tabs.forEach(t => {
+                const btn = document.getElementById(`tab-btn-${t}`);
+                const content = document.getElementById(`tab-content-${t}`);
+                
+                if (t === tabKey) {
+                    btn.className = "py-2.5 px-1 rounded-xl transition-all duration-200 bg-brand-blue text-white shadow-md flex flex-col items-center justify-center gap-1";
+                    content.classList.remove('hidden');
+                } else {
+                    btn.className = "py-2.5 px-1 rounded-xl transition-all duration-200 text-slate-600 hover:text-slate-900 flex flex-col items-center justify-center gap-1";
+                    content.classList.add('hidden');
+                }
+            });
+        }
+
+        // Modal Join Functions
+        function openJoinModal() {
+            document.getElementById('modal-join').classList.remove('hidden');
+        }
+        function closeJoinModal() {
+            document.getElementById('modal-join').classList.add('hidden');
+        }
+
+        // Modal Question Functions
+        function openQuestionModal() {
+            document.getElementById('modal-question').classList.remove('hidden');
+        }
+        function closeQuestionModal() {
+            document.getElementById('modal-question').classList.add('hidden');
+        }
+
+        // Handle Question Submission
+        function handleQuestionSubmit(e) {
+            e.preventDefault();
+            closeQuestionModal();
+            
+            // Clear Form
+            document.getElementById('q-name').value = '';
+            document.getElementById('q-text').value = '';
+
+            // Show Toast
+            showToast("Pertanyaanmu berhasil dikirim ke panitia!");
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-msg');
+            toastMsg.innerText = msg;
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
